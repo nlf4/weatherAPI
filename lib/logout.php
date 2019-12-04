@@ -1,4 +1,6 @@
 <?php
+require_once "autoload.php";
+
 session_start();
 session_destroy();
 unset($_SESSION);
@@ -6,5 +8,5 @@ unset($_SESSION);
 session_start();
 session_regenerate_id();
 $_SESSION["msg"][] = "U bent afgemeld!";
-header("Location: /wdev_jens/oef62/login.php");
+header("Location: " . $_application_folder . "/login.php");
 ?>

@@ -2,7 +2,11 @@
 /* Deze functie laadt de <head> sectie */
 function BasicHead()
 {
-    print LoadTemplate("basic_head");
+    global $_application_folder;
+
+    $data = array("stylesheets" => '<link rel="stylesheet" href="' . $_application_folder . '/css/style.css">');
+    $template = LoadTemplate("basic_head");
+    print ReplaceContentOneRow($data, $template);
 
     $_SESSION["head_printed"] = true;
 }

@@ -1,6 +1,7 @@
 <?php
 session_start();
 $_SESSION["head_printed"] = false;
+$_application_folder = "/wdev_steven/testremote";
 
 require_once "pdo.php";                         //database functies
 require_once "view_functions.php";      //basic_head, load_template, replacecontent...
@@ -11,8 +12,5 @@ require_once "show_messages.php";
 //de loginpagina gaat
 if ( ! isset($_SESSION['usr']) AND ! $login_form AND ! $register_form AND ! $no_access)
 {
-    header("Location: /wdev_jens/oef62/no_access.php");
+    header("Location: " . $_application_folder . "/no_access.php");
 }
-
-
-$WW_JENS = "zDbI8wIbW3JG";

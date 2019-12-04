@@ -40,7 +40,7 @@ if ( $formname == "registration_form" AND $_POST['registerbutton'] == "Register"
 
         if ( ControleLoginWachtwoord( $_POST["usr_login"] , $_POST["usr_paswd"]) )
         {
-            header("Location: /wdev_jens/oef62/steden.php");
+            header("Location: " . $_application_folder . "/steden.php");
         }
     }
     else
