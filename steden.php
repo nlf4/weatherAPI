@@ -1,7 +1,8 @@
 <?php
 require_once "lib/autoload.php";
 
-BasicHead();
+$css = array( "steden.css", "algemeen.css");
+BasicHead( $css );
 ShowMessages();
 ?>
 <body>

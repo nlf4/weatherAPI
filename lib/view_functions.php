@@ -1,10 +1,15 @@
 <?php
 /* Deze functie laadt de <head> sectie */
-function BasicHead()
+function BasicHead( $css = "" )
 {
     global $_application_folder;
 
-    $data = array("stylesheets" => '<link rel="stylesheet" href="' . $_application_folder . '/css/style.css">');
+    $str_stylesheets = "";
+    foreach( $css as $stylesheet )
+    {
+        $str_stylesheets .= '<link rel="stylesheet" href="' . $_application_folder . '/css/' . $stylesheet . '">' ;
+    }
+    $data = array("stylesheets" => $str_stylesheets );
     $template = LoadTemplate("basic_head");
     print ReplaceContentOneRow($data, $template);
 
