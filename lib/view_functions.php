@@ -5,10 +5,14 @@ function BasicHead( $css = "" )
     global $_application_folder;
 
     $str_stylesheets = "";
-    foreach( $css as $stylesheet )
+    if ( is_array($css))
     {
-        $str_stylesheets .= '<link rel="stylesheet" href="' . $_application_folder . '/css/' . $stylesheet . '">' ;
+        foreach( $css as $stylesheet )
+        {
+            $str_stylesheets .= '<link rel="stylesheet" href="' . $_application_folder . '/css/' . $stylesheet . '">' ;
+        }
     }
+
     $data = array("stylesheets" => $str_stylesheets );
     $template = LoadTemplate("basic_head");
     print ReplaceContentOneRow($data, $template);

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION["head_printed"] = false;
-$_application_folder = "/testclone2";
+$_application_folder = "/wdev_steven/testremote";
 
 require_once "passwd.php";
 require_once "pdo.php";                          //database functies
