@@ -1,5 +1,5 @@
 <?php
-//
+////
 $target_dir = "../img/";                                                          //de map waar de afbeelding uiteindelijk moet komen; relatief pad tov huidig script
 $max_size = 5000000;                                                           //maximum grootte in bytes
 $allowed_extensions = [ "jpeg", "jpg", "png", "gif" ];       //toegelaten bestandsextensies
