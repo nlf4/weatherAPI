@@ -94,3 +94,26 @@ input.form-control.postcode {
     width: 10%;
 }
 
+.uploadbutton {
+    padding: 0px;
+    padding-bottom: 10px;
+
+}
+
+img.thumbnail {
+    width: 15vw;
+    margin-right: 2vw;
+    border: 1px solid #ccc;
+}
+
+div.div_thumb {
+    height: 40%;
+    overflow: hidden;
+    margin-bottom: 2vh;
+}
+
+span.img_name {
+    font-size: 10px;
+    overflow: hidden;
+}
+

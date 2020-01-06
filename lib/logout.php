@@ -2,6 +2,8 @@
 require_once "autoload.php";
 
 session_start();
+LogLogoutUser();
+
 session_destroy();
 unset($_SESSION);
 
