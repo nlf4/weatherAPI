@@ -1,7 +1,9 @@
 <?php
 require_once "lib/autoload.php";
 
-BasicHead();
+$css = array( "style.css");
+BasicHead( $css );
+
 $MS->ShowMessages();
 ?>
 <body>

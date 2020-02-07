@@ -5,8 +5,9 @@ ini_set("display_startup_errors", 1);
 
 require_once "lib/autoload.php";
 
-$css = array( "steden.css", "algemeen.css");
+$css = array( "style.css");
 BasicHead( $css );
+
 $MS->ShowMessages();
 ?>
 <body>

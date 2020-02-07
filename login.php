@@ -10,7 +10,9 @@ if ( isset($_SESSION['usr']) )
     exit;
 }
 
-BasicHead();
+$css = array( "style.css");
+BasicHead( $css );
+
 $MS->ShowMessages();
 ?>
 <body>
