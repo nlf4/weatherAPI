@@ -13,17 +13,17 @@ if ( $formname == "login_form" AND $buttonvalue == "Log in" )
 
     if ( $User->CheckLogin() )
     {
-        $_SESSION["msg"][] = "Welkom, " . $_SESSION['usr']->getVoornaam() . "!" ;
+        $MS->AddMessage( "Welkom, " . $_SESSION['usr']->getVoornaam() . "!" );
         header("Location: " . $_application_folder . "/steden.php");
     }
     else
     {
-        $_SESSION["msg"][] = "Sorry! Verkeerde login of wachtwoord!";
+        $MS->AddMessage( "Sorry! Verkeerde login of wachtwoord!" );
         header("Location: " . $_application_folder . "/login.php");
     }
 }
 else
 {
-    $_SESSION["msg"][] = "Foute formname of buttonvalue";
+    $MS->AddMessage( "Foute formname of buttonvalue" );
 }
 ?>

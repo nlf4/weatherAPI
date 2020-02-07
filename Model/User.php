@@ -323,6 +323,7 @@ class User
     {
         global $tablename;
         global $_application_folder;
+        global $MS;
 
         //wachtwoord coderen
         $password_encrypted = password_hash ( $_POST["usr_paswd"] , PASSWORD_DEFAULT );
@@ -341,7 +342,7 @@ class User
 
         if ( ExecuteSQL($sql) )
         {
-            $_SESSION["msg"][] = "Bedankt voor uw registratie!" ;
+            $MS->AddMessage( "Bedankt voor uw registratie!" );
 
             $this->setLogin($_POST['usr_login']);
             $this->setPaswd($_POST['usr_paswd']);
@@ -352,13 +353,13 @@ class User
             }
             else
             {
-                $_SESSION["msg"][] = "Sorry! Verkeerde login of wachtwoord na registratie!";
+                $MS->AddMessage( "Sorry! Verkeerde login of wachtwoord na registratie!" );
                 header("Location: " . $_application_folder . "/login.php");
             }
         }
         else
         {
-            $_SESSION["msg"][] = "Sorry, er liep iets fout. Uw gegevens werden niet goed opgeslagen" ;
+            $MS->AddMessage( "Sorry, er liep iets fout. Uw gegevens werden niet goed opgeslagen" ) ;
         }
     }
 }

@@ -2,7 +2,7 @@
 require_once "lib/autoload.php";
 
 BasicHead();
-ShowMessages();
+$MS->ShowMessages();
 ?>
 <body>
 
