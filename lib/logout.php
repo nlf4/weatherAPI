@@ -2,7 +2,8 @@
 require_once "autoload.php";
 
 session_start();
-LogLogoutUser();
+$User = new User();
+$User->LogLogoutUser();
 
 session_destroy();
 unset($_SESSION);

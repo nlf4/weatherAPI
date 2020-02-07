@@ -1,4 +1,8 @@
 <?php
+ini_set("error_reporting", E_ALL);
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
+
 require_once "lib/autoload.php";
 
 $css = array( "steden.css", "algemeen.css");
@@ -18,9 +22,11 @@ ShowMessages();
     <div class="row">
 
         <?php
-        $data = GetData("select * from images");
+        $cityLoader = new CityLoader();
+        $cities = $cityLoader->Load();
+
         $template = LoadTemplate("steden");
-        print ReplaceContent( $data, $template);
+        print ReplaceCities( $cities, $template);
         ?>
 
     </div>
