@@ -353,13 +353,13 @@ class User
             }
             else
             {
-                $MS->AddMessage( "Sorry! Verkeerde login of wachtwoord na registratie!" );
+                $MS->AddMessage( "Sorry! Verkeerde login of wachtwoord na registratie!", "error" );
                 header("Location: " . $_application_folder . "/login.php");
             }
         }
         else
         {
-            $MS->AddMessage( "Sorry, er liep iets fout. Uw gegevens werden niet goed opgeslagen" ) ;
+            $MS->AddMessage( "Sorry, er liep iets fout. Uw gegevens werden niet goed opgeslagen", "error" ) ;
         }
     }
 }

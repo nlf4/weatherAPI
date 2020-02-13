@@ -18,12 +18,12 @@ if ( $formname == "login_form" AND $buttonvalue == "Log in" )
     }
     else
     {
-        $MS->AddMessage( "Sorry! Verkeerde login of wachtwoord!" );
+        $MS->AddMessage( "Sorry! Verkeerde login of wachtwoord!", "error" );
         header("Location: " . $_application_folder . "/login.php");
     }
 }
 else
 {
-    $MS->AddMessage( "Foute formname of buttonvalue" );
+    $MS->AddMessage( "Foute formname of buttonvalue", "error" );
 }
 ?>

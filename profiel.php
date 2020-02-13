@@ -2,7 +2,8 @@
 require_once "lib/autoload.php";
 if ( ! $_SESSION['usr']->getVzEid() > "" )
 {
-    $MS->AddMessage("U moet uw E-id nog opladen!!!");
+    $MS->AddMessage("U moet uw E-id nog opladen!!!", "error");
+    $MS->AddMessage("Dit is gewoon een info bericht", "info");
 }
 
 $css = array( "style.css");

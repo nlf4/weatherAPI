@@ -2,27 +2,32 @@
 
 class MessageService
 {
-    public function AddMessage( $msg )
+    public function AddMessage( $msg, $type = "info" )
     {
-        $_SESSION['msg'][] = $msg ;
+        if ( $type == "info" ) $_SESSION['info'][] = $msg ;
+        if ( $type == "error" ) $_SESSION['error'][] = $msg ;
     }
 
     public function ShowMessages()
     {
         if ( ! $_SESSION["head_printed"] ) BasicHead();
 
-        //weergeven messages
-        if ( key_exists("msg", $_SESSION) AND is_array($_SESSION["msg"]) AND count($_SESSION["msg"]) > 0 )
+        //weergeven 2 soorten messages: errors en infos
+        foreach( array("error", "info") as $type )
         {
-            foreach( $_SESSION["msg"] as $message )
+            if ( key_exists("$type", $_SESSION) AND is_array($_SESSION["$type"]) AND count($_SESSION["$type"]) > 0 )
             {
-                $row = array( "message" => $message );
-                $templ = LoadTemplate("messages");
-                print ReplaceContentOneRow( $row, $templ );
-            }
+                foreach( $_SESSION["$type"] as $message )
+                {
+                    $row = array( "message" => $message );
+                    $templ = LoadTemplate("$type" . "s");   // errors.html en infos.html
+                    print ReplaceContentOneRow( $row, $templ );
+                }
 
-            unset($_SESSION['msg']);
+                unset($_SESSION["$type"]);
+            }
         }
+
     }
 
 }
