@@ -4,8 +4,7 @@ class MessageService
 {
     public function AddMessage( $msg, $type = "info" )
     {
-        if ( $type == "info" ) $_SESSION['info'][] = $msg ;
-        if ( $type == "error" ) $_SESSION['error'][] = $msg ;
+        $_SESSION["$type"][] = $msg ;
     }
 
     public function ShowMessages()
