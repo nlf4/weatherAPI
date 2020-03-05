@@ -85,7 +85,7 @@ class Container
     public function getUploadService()
     {
         if ( $this->uploadService === null ){
-            $this->uploadService = new UploadService();
+            $this->uploadService = new UploadService( $this->getMessageService() );
         }
         return $this->uploadService;
     }

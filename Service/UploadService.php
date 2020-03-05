@@ -9,7 +9,7 @@ class UploadService
     private $allowed_extensions = [ "jpeg", "jpg", "png", "gif" ];       //toegelaten bestandsextensies
 
     // Constructor Injection
-    public function __construct( MessageService $messageService)
+    public function __construct( MessageService $messageService )
     {
         $this->MS = $messageService;
     }
