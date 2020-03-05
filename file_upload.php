@@ -2,8 +2,9 @@
 require_once "lib/autoload.php";
 
 $css = array( "style.css");
-BasicHead( $css );
+$VS->BasicHead( $css );
 
+$MS->ShowMessages();
 ?>
 <body>
 
@@ -11,13 +12,13 @@ BasicHead( $css );
     <h1>Formulier File Upload</h1>
 </div>
 
-<?php PrintNavBar(); ?>
+<?php $VS->PrintNavBar(); ?>
 
 <div class="container">
     <div class="row">
 
         <?php
-        print LoadTemplate("form_file_upload");
+        print $VS->LoadTemplate("form_file_upload");
         $images = glob( "img/*.{jpg,png,gif}", GLOB_BRACE );
         foreach( $images as $img )
         {

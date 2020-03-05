@@ -7,11 +7,7 @@ $buttonvalue = $_POST['loginbutton'];
 
 if ( $formname == "login_form" AND $buttonvalue == "Log in" )
 {
-    $User = new User();
-    $User->setLogin($_POST['usr_login']);
-    $User->setPaswd($_POST['usr_paswd']);
-
-    if ( $User->CheckLogin() )
+    if ( $Auth->CheckLogin($_POST['usr_login'], $_POST['usr_paswd']) )
     {
         $MS->AddMessage( "Welkom, " . $_SESSION['usr']->getVoornaam() . "!" );
         header("Location: " . $_application_folder . "/steden.php");

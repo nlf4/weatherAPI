@@ -2,7 +2,7 @@
 require_once "lib/autoload.php";
 
 $css = array( "style.css" );
-BasicHead( $css );
+$VS->BasicHead( $css );
 ?>
 <body>
 
@@ -14,11 +14,10 @@ BasicHead( $css );
     <div class="row">
 
         <?php
-        $cityLoader = new CityLoader();
-        $cities = $cityLoader->Load( $id = $_GET['id'] );
+        $cities = $Container->getCityLoader()->Load( $id = $_GET['id'] );
+        $template = $VS->LoadTemplate("stad_form");
 
-        $template = LoadTemplate("stad_form");
-        print ReplaceCities( $cities, $template);
+        print $VS->ReplaceCities( $cities, $template);
         ?>
 
     </div>

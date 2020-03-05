@@ -1,8 +1,9 @@
 <?php
 require_once "lib/autoload.php";
 
-$css = array( "style.css");
-BasicHead($css);
+$css = array( "style.css" );
+$VS->BasicHead( $css );
+
 $MS->ShowMessages();
 ?>
     <body>
@@ -10,7 +11,7 @@ $MS->ShowMessages();
     <div class="jumbotron text-center">
         <h1>Weekoverzicht</h1>
     </div>
-    <?php PrintNavBar(); ?>
+    <?php $VS->PrintNavBar(); ?>
 
     <div class="container">
         <div class="row">
@@ -46,7 +47,7 @@ $MS->ShowMessages();
                 $sqldate = date("Y-m-d", $d);
 
                 $sql = "SELECT taa_omschr FROM taak WHERE taa_datum = '".$sqldate."'" ;
-                $data = GetData($sql);
+                $data = $Container->getDBM()->GetData($sql);
 
                 $taken = array();
                 foreach( $data as $row )

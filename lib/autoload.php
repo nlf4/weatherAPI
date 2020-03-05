@@ -1,27 +1,39 @@
 <?php
-$_application_folder = "/testremote";
-$_root_folder = $_SERVER['DOCUMENT_ROOT'] . "$_application_folder";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/testremote/Model/Config.php";
+
+$config = new Config( $path = "/testremote" );
+$_application_folder = $config->getApplicationFolder();
+$_root_folder = $config->getRootFolder();
 
 //load Models
 require_once $_root_folder . "/Model/City.php";
 require_once $_root_folder . "/Model/User.php";
 
 //load Services
+require_once $_root_folder . "/Service/Authentication.php";
 require_once $_root_folder . "/Service/CityLoader.php";
+require_once $_root_folder . "/Service/Container.php";
+require_once $_root_folder . "/Service/DBManager.php";
 require_once $_root_folder . "/Service/MessageService.php";
+require_once $_root_folder . "/Service/UploadService.php";
+require_once $_root_folder . "/Service/DownloadService.php";
+require_once $_root_folder . "/Service/ViewService.php";
 
 session_start();
+
+$Container = new Container( $config );
+
+//rename van veel gebruikte services
+$Auth = $Container->getAuthentication();
+$DBM = $Container->getDBM();
+$MS = $Container->getMessageService();
+$VS = $Container->getViewService();
+
 $_SESSION["head_printed"] = false;
 
-$MS = new MessageService();
-
-require_once $_root_folder . "/lib/passwd.php";
-require_once $_root_folder . "/lib/pdo.php";                          //database functies
-require_once $_root_folder . "/lib/view_functions.php";      //basic_head, load_template, replacecontent...
-
 //redirect naar NO ACCESS pagina als de gebruiker niet ingelogd is en niet naar
-//de loginpagina gaat
-if ( ! isset($_SESSION['usr']) AND ! $login_form AND ! $register_form AND ! $no_access)
+//een publiek toegankelijke pagina gaat (login, registratie of no_access)
+if ( ! isset($_SESSION['usr']) AND ! $login_form AND ! $register_form AND ! $no_access )
 {
-    header("Location: " . $_application_folder . "/no_access.php");
+    header("Location: " . $config->getApplicationFolder() . "/no_access.php");
 }

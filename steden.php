@@ -6,7 +6,7 @@ ini_set("display_startup_errors", 1);
 require_once "lib/autoload.php";
 
 $css = array( "style.css");
-BasicHead( $css );
+$VS->BasicHead($css);
 
 $MS->ShowMessages();
 ?>
@@ -17,17 +17,16 @@ $MS->ShowMessages();
     <p>Tips voor citytrips voor vrolijke vakantiegangers!</p>
 </div>
 
-<?php PrintNavBar(); ?>
+<?php $VS->PrintNavBar(); ?>
 
 <div class="container">
     <div class="row">
 
         <?php
-        $cityLoader = new CityLoader();
-        $cities = $cityLoader->Load();
+        $cities = $Container->getCityLoader()->Load();
+        $template = $VS->LoadTemplate("steden");
 
-        $template = LoadTemplate("steden");
-        print ReplaceCities( $cities, $template);
+        print $VS->ReplaceCities( $cities, $template);
         ?>
 
     </div>

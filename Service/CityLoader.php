@@ -1,6 +1,12 @@
 <?php
 class CityLoader
 {
+    private $DBM;
+
+    public function __construct( DBManager $DBM)
+    {
+        $this->DBM = $DBM;
+    }
 
     public function Load( $id = null )
     {
@@ -9,7 +15,7 @@ class CityLoader
         $sql = "select * from images";
         if ( $id > 0 ) $sql .= " where img_id=$id";
 
-        $data = GetData($sql);
+        $data = $this->DBM->GetData($sql);
         foreach ( $data as $row )
         {
             $city = new City();

@@ -6,8 +6,9 @@ if ( ! $_SESSION['usr']->getVzEid() > "" )
     $MS->AddMessage("Dit is gewoon een info bericht", "info");
 }
 
-$css = array( "style.css");
-BasicHead( $css );
+$css = array( "style.css" );
+$VS->BasicHead( $css );
+
 $MS->ShowMessages();
 ?>
 <body>
@@ -16,7 +17,7 @@ $MS->ShowMessages();
     <h1>Uw profiel</h1>
 </div>
 
-<?php PrintNavBar(); ?>
+<?php $VS->PrintNavBar(); ?>
 
 <div class="container">
 
@@ -29,7 +30,7 @@ $MS->ShowMessages();
 
             //gebruikersgegevens ophalen uit databank
             $sql = "select * from users where usr_id=" . $_SESSION["usr"]->getId();
-            $data = GetData($sql);
+            $data = $Container->getDBM()->GetData($sql);
 
             print "<table class='table table-striped table-bordered'>";
             foreach( $data as $row )

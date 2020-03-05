@@ -1,8 +1,8 @@
 <?php
 require_once "lib/autoload.php";
 
-$css = array( "style.css");
-BasicHead( $css );
+$css = array( "style.css" );
+$VS->BasicHead( $css );
 
 $MS->ShowMessages();
 ?>
@@ -12,7 +12,7 @@ $MS->ShowMessages();
     <h1>Vacatures</h1>
 </div>
 
-<?php PrintNavBar(); ?>
+<?php $VS->PrintNavBar(); ?>
 
 <div class="container">
     <div class="row">
