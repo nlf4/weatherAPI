@@ -41,6 +41,10 @@ form {
     background: lightgreen;
 }
 
+.breadcrumb.black {
+    color: #333;
+}
+
 
  #form_stad, #registration_form {
     margin: 0 auto;
@@ -69,6 +73,7 @@ form {
 
 .jumbotron {
     margin-bottom: 0;
+    padding: 2rem;
 }
 
 .navbar {

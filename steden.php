@@ -8,6 +8,9 @@ require_once "lib/autoload.php";
 $css = array( "style.css");
 $VS->BasicHead($css);
 
+$cities = $Container->getCityLoader()->Load();
+$template = $VS->LoadTemplate("steden");
+
 $MS->ShowMessages();
 ?>
 <body>
@@ -17,15 +20,12 @@ $MS->ShowMessages();
     <p>Tips voor citytrips voor vrolijke vakantiegangers!</p>
 </div>
 
-<?php $VS->PrintNavBar(); ?>
+<?php $VS->PrintNavBar( $Container->getDBM() ); ?>
 
 <div class="container">
     <div class="row">
 
         <?php
-        $cities = $Container->getCityLoader()->Load();
-        $template = $VS->LoadTemplate("steden");
-
         print $VS->ReplaceCities( $cities, $template);
         ?>
 

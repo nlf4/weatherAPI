@@ -17,7 +17,7 @@ $MS->ShowMessages();
     <h1>Uw profiel</h1>
 </div>
 
-<?php $VS->PrintNavBar(); ?>
+<?php $VS->PrintNavBar( $Container->getDBM() ); ?>
 
 <div class="container">
 

@@ -4,10 +4,9 @@ class ViewService
     private $_application_folder;
     private $DBM;
 
-    public function __construct( $_application_folder, DBManager $DBM )
+    public function __construct( $_application_folder )
     {
         $this->_application_folder = $_application_folder;
-        $this->DBM = $DBM;
     }
 
     /* Deze functie laadt de <head> sectie */
@@ -29,10 +28,10 @@ class ViewService
         $_SESSION["head_printed"] = true;
     }
 
-    function PrintNavBar()
+    function PrintNavBar( PDO_Manager $DBM )
     {
         //navbar items ophalen
-        $data = $this->DBM->GetData("select * from menu order by men_order");
+        $data = $DBM->GetData("select * from menu order by men_order");
 
         $laatste_deel_url = basename($_SERVER['SCRIPT_NAME']);
 
@@ -103,12 +102,42 @@ class ViewService
             $content = str_replace("@@img_width@@", $city->getWidth(), $content);
             $content = str_replace("@@img_height@@", $city->getHeight(), $content);
 
+            $content = str_replace("@@cit_name@@", $city->getName(), $content);
+            $content = str_replace("@@cit_inhabitants@@", number_format( $city->getNumberOfInhabitants(), 0, ",", " "), $content);
+            $content = str_replace("@@cit_coordinate_x@@", $city->getCoordinateX(), $content);
+            $content = str_replace("@@cit_coordinate_y@@", $city->getCoordinateY(), $content);
+            $content = str_replace("@@cit_coordinates@@", $city->Coordinates(), $content);
+
             $returnval .= $content;
         }
 
         return $returnval;
     }
 
+    /* Deze functie voegt data en template samen en print het resultaat */
+    function ReplaceFlowers( $flowers, $template_html )
+    {
+        $returnval = "";
+
+        foreach ( $flowers as $flower )
+        {
+            $content = $template_html;
+            $content = str_replace("@@img_id@@", $flower->getId(), $content);
+            $content = str_replace("@@img_title@@", $flower->getTitle(), $content);
+            $content = str_replace("@@img_filename@@", $flower->getFileName(), $content);
+            $content = str_replace("@@img_width@@", $flower->getWidth(), $content);
+            $content = str_replace("@@img_height@@", $flower->getHeight(), $content);
+
+            $content = str_replace("@@flo_name@@", $flower->getName(), $content);
+            $content = str_replace("@@flo_color@@", $flower->getColor(), $content);
+            $content = str_replace("@@flo_months@@", $flower->getMonths(), $content);
+
+            $returnval .= $content;
+        }
+
+        return $returnval;
+    }
+    
     /* Deze functie voegt data en template samen en print het resultaat */
     function ReplaceContentOneRow( $row, $template_html )
     {

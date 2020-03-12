@@ -1,13 +1,17 @@
 <!--template voor 1 kolom in de body van stad.php -->
 <div class="col-sm-4">
 
-    <h3>@@img_title@@</h3>
+    <h3>@@cit_name@@</h3>
 
-    <p>Een beetje tekst</p>
+    <ul>
+        <li>Inwoners: @@cit_inhabitants@@</li>
+        <li>Coordinates: @@cit_coordinates@@</li>
+    </ul>
 
     <a href="stad_form.php?id=@@img_id@@">
-        <img class="img-fluid" src=img/@@img_filename@@.jpg>
+        <img title="@@img_title@@" class="img-fluid" src=img/@@img_filename@@.jpg>
     </a>
+    <span class="breadcrumb black">@@img_title@@</span>
 
 </div>
 

@@ -1,92 +1,78 @@
 <?php
-class City
+class City extends AbstractItem
 {
-    private $id;
-    private $filename;
-    private $title;
-    private $width;
-    private $height;
+    private $name;
+    private $number_of_inhabitants;
+    private $coordinate_x;
+    private $coordinate_y;
 
     /**
      * @return mixed
      */
-    public function getId()
+    public function getName()
     {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFileName()
-    {
-        return $this->filename;
+        return $this->name;
     }
 
     /**
      * @param mixed $name
      */
-    public function setFileName($name)
+    public function setName($name)
     {
-        $this->filename = $name;
+        $this->name = $name;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getNumberOfInhabitants()
+    {
+        return $this->number_of_inhabitants;
+    }
+
+    /**
+     * @param mixed $number_of_inhabitants
+     */
+    public function setNumberOfInhabitants($number_of_inhabitants)
+    {
+        $this->number_of_inhabitants = $number_of_inhabitants;
     }
 
     /**
      * @return mixed
      */
-    public function getTitle()
+    public function getCoordinateX()
     {
-        return $this->title;
+        return $this->coordinate_x;
     }
 
     /**
-     * @param mixed $title
+     * @param mixed $coordinate_x
      */
-    public function setTitle($title)
+    public function setCoordinateX($coordinate_x)
     {
-        $this->title = $title;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getWidth()
-    {
-        return $this->width;
-    }
-
-    /**
-     * @param mixed $width
-     */
-    public function setWidth($width)
-    {
-        $this->width = $width;
+        $this->coordinate_x = $coordinate_x;
     }
 
     /**
      * @return mixed
      */
-    public function getHeight()
+    public function getCoordinateY()
     {
-        return $this->height;
+        return $this->coordinate_y;
     }
 
     /**
-     * @param mixed $height
+     * @param mixed $coordinate_y
      */
-    public function setHeight($height)
+    public function setCoordinateY($coordinate_y)
     {
-        $this->height = $height;
+        $this->coordinate_y = $coordinate_y;
     }
 
-
-
+    public function Coordinates()
+    {
+        return $this->coordinate_x . " / " . $this->coordinate_y;
+    }
 }

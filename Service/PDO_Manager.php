@@ -1,11 +1,15 @@
 <?php
-class DBManager
+class PDO_Manager implements DBInterface
 {
     private $PDO;
+    private $MS;
 
-    public function __construct( PDO $PDO )
+    public function __construct( PDO $PDO, MessageService $MS )
     {
         $this->PDO = $PDO;
+        $this->MS = $MS;
+
+        //$this->MS->AddMessage("CONSTRUCT PDO_Manager");
     }
 
     public function GetData( $sql )

@@ -11,7 +11,7 @@ $MS->ShowMessages();
     <div class="jumbotron text-center">
         <h1>Weekoverzicht</h1>
     </div>
-    <?php $VS->PrintNavBar(); ?>
+    <?php $VS->PrintNavBar( $Container->getDBM() ); ?>
 
     <div class="container">
         <div class="row">

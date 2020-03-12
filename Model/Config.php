@@ -11,7 +11,8 @@ class Config
     private $application_folder = "";
     private $root_folder;
 
-    private $db_dsn = 'mysql:host=185.115.218.166;dbname=wdev_steven';
+    private $db_host = "185.115.218.166";
+    private $db_database = "wdev_steven";
     private $db_user = 'wdev_steven';
     private $db_pass = 'DCouV9xb4PwF';
 
@@ -20,6 +21,23 @@ class Config
         $this->application_folder = $path;
         $this->root_folder = $_SERVER['DOCUMENT_ROOT'] . $this->application_folder ;
     }
+
+    /**
+     * @return string
+     */
+    public function getDbHost()
+    {
+        return $this->db_host;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDbDatabase()
+    {
+        return $this->db_database;
+    }
+
 
     /**
      * @return string
@@ -42,7 +60,7 @@ class Config
      */
     public function getDbDsn()
     {
-        return $this->db_dsn;
+        return 'mysql:host=' . $this->getDbHost() . ';dbname=' . $this->getDbDatabase();
     }
 
     /**

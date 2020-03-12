@@ -6,14 +6,24 @@ $_application_folder = $config->getApplicationFolder();
 $_root_folder = $config->getRootFolder();
 
 //load Models
+require_once $_root_folder . "/Model/AbstractItem.php";
 require_once $_root_folder . "/Model/City.php";
+require_once $_root_folder . "/Model/Flower.php";
 require_once $_root_folder . "/Model/User.php";
 
 //load Services
 require_once $_root_folder . "/Service/Authentication.php";
+
+require_once $_root_folder . "/Service/DataLoader.php";
 require_once $_root_folder . "/Service/CityLoader.php";
+require_once $_root_folder . "/Service/FlowerLoader.php";
+
 require_once $_root_folder . "/Service/Container.php";
-require_once $_root_folder . "/Service/DBManager.php";
+
+require_once $_root_folder . "/Service/DBInterface.php";
+require_once $_root_folder . "/Service/PDO_Manager.php";
+require_once $_root_folder . "/Service/MYSQLI_Manager.php";
+
 require_once $_root_folder . "/Service/MessageService.php";
 require_once $_root_folder . "/Service/UploadService.php";
 require_once $_root_folder . "/Service/DownloadService.php";

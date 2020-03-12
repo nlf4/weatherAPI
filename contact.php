@@ -13,7 +13,7 @@ $MS->ShowMessages();
     <h1>Contact</h1>
 </div>
 
-<?php $VS->PrintNavBar(); ?>
+<?php $VS->PrintNavBar( $Container->getDBM() ); ?>
 
 <div class="container">
     <div class="row">

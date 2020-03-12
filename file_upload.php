@@ -12,7 +12,7 @@ $MS->ShowMessages();
     <h1>Formulier File Upload</h1>
 </div>
 
-<?php $VS->PrintNavBar(); ?>
+<?php $VS->PrintNavBar( $Container->getDBM() ); ?>
 
 <div class="container">
     <div class="row">

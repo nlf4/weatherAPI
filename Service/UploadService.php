@@ -15,10 +15,10 @@ class UploadService
     }
 
     /**
-     * @param DBManager $DBM
+     * @param PDO_Manager $DBM
      */
     // Setter Injection
-    public function setDBM(DBManager $DBM)
+    public function setDBM(PDO_Manager $DBM)
     {
         $this->DBM = $DBM;
     }

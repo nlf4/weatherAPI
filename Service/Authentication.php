@@ -11,16 +11,16 @@ class Authentication
     private $DBM;
     private $MS;
 
-    public function __construct( DBManager $DBM, MessageService $MS )
+    public function __construct( PDO_Manager $DBM, MessageService $MS )
     {
         $this->DBM = $DBM;
         $this->MS = $MS;
     }
 
     /**
-     * @param DBManager $DBM
+     * @param PDO_Manager $DBM
      */
-    public function setDBM( DBManager $DBM )
+    public function setDBM( PDO_Manager $DBM )
     {
         $this->DBM = $DBM;
     }

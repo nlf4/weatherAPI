@@ -3,10 +3,15 @@ class Container
 {
     private $config;
     private $pdo;
+    private $mysqli;
+
     private $DBM;
+    private $MySQLi_Manager;
+
     private $viewService;
     private $messageService;
     private $cityLoader;
+    private $flowerLoader;
     private $uploadService;
     private $authentication;
 
@@ -36,14 +41,40 @@ class Container
     }
 
     /**
-     * @return DBManager
+     * @return mysqli
+     */
+    public function getMysqli()
+    {
+        if ( $this->mysqli === null ) {
+            $this->mysqli = new mysqli( $this->config->getDbHost(),
+                                                          $this->config->getDbUser(),
+                                                          $this->config->getDbPass(),
+                                                          $this->config->getDbDatabase()  );
+        }
+        return $this->mysqli;
+    }
+
+
+    /**
+     * @return PDO_Manager
      */
     public function getDBM()
     {
         if ( $this->DBM === null ){
-            $this->DBM = new DBManager( $this->getPDO() );
+            $this->DBM = new PDO_Manager( $this->getPDO(), $this->getMessageService() );
         }
         return $this->DBM;
+    }
+
+    /**
+     * @return MYSQLI_Manager
+     */
+    public function getMySQLiManager()
+    {
+        if ( $this->MySQLi_Manager === null ){
+            $this->MySQLi_Manager = new MYSQLI_Manager( $this->getMySQLi(), $this->getMessageService() );
+        }
+        return $this->MySQLi_Manager;
     }
 
     /**
@@ -52,7 +83,7 @@ class Container
     public function getViewService()
     {
         if ( $this->viewService === null ){
-            $this->viewService = new ViewService( $this->config->getApplicationFolder(), $this->getDBM());
+            $this->viewService = new ViewService( $this->config->getApplicationFolder() );
         }
         return $this->viewService;
     }
@@ -66,7 +97,18 @@ class Container
             $this->cityLoader = new CityLoader( $this->getDBM() );
         }
         return $this->cityLoader;
-    }    
+    }
+
+    /**
+     * @return FlowerLoader
+     */
+    public function getFlowerLoader()
+    {
+        if ( $this->flowerLoader === null ){
+            $this->flowerLoader = new FlowerLoader( $this->getMySQLiManager() );
+        }
+        return $this->flowerLoader;
+    }
 
     /**
      * @return MessageService
