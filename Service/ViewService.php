@@ -3,11 +3,14 @@ class ViewService
 {
     private $_application_folder;
     private $DBM;
+    private $weatherAPI;
 
-    public function __construct( $_application_folder )
+    public function __construct( $_application_folder)
     {
         $this->_application_folder = $_application_folder;
     }
+
+
 
     /* Deze functie laadt de <head> sectie */
     function BasicHead( $css = "" )
@@ -95,7 +98,10 @@ class ViewService
 
         foreach ( $cities as $city )
         {
+            $this->weatherAPI = new WeatherData();
+
             $content = $template_html;
+
             $content = str_replace("@@img_id@@", $city->getId(), $content);
             $content = str_replace("@@img_title@@", $city->getTitle(), $content);
             $content = str_replace("@@img_filename@@", $city->getFileName(), $content);
@@ -107,6 +113,9 @@ class ViewService
             $content = str_replace("@@cit_coordinate_x@@", $city->getCoordinateX(), $content);
             $content = str_replace("@@cit_coordinate_y@@", $city->getCoordinateY(), $content);
             $content = str_replace("@@cit_coordinates@@", $city->Coordinates(), $content);
+
+            $content = str_replace("@@cit_weather@@", $this->weatherAPI->renderWeather($city->getName()), $content);
+            $content = str_replace("@@cit_temp@@", $this->weatherAPI->renderTemp($city->getName()), $content);
 
             $returnval .= $content;
         }

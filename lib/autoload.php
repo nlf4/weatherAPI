@@ -1,7 +1,7 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/testremote/Model/Config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api_test/Model/Config.php";
 
-$config = new Config( $path = "/testremote" );
+$config = new Config( $path = "/api_test/" );
 $_application_folder = $config->getApplicationFolder();
 $_root_folder = $config->getRootFolder();
 
@@ -10,6 +10,7 @@ require_once $_root_folder . "/Model/AbstractItem.php";
 require_once $_root_folder . "/Model/City.php";
 require_once $_root_folder . "/Model/Flower.php";
 require_once $_root_folder . "/Model/User.php";
+require_once $_root_folder . "/Model/WeatherData.php";
 
 //load Services
 require_once $_root_folder . "/Service/Authentication.php";
@@ -28,6 +29,7 @@ require_once $_root_folder . "/Service/MessageService.php";
 require_once $_root_folder . "/Service/UploadService.php";
 require_once $_root_folder . "/Service/DownloadService.php";
 require_once $_root_folder . "/Service/ViewService.php";
+
 
 session_start();
 
